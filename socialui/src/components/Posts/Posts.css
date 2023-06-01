@@ -1,9 +1,14 @@
   .share {
-    width: 100%;
+    width: 70%;
     height: 170px;
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
     box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    margin: 20px;
+    margin-bottom: 60px;
+    background-color: lightgrey;
+    /* background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%); */
+    /* background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%); */
   }
   
   .shareWrapper {
@@ -73,4 +78,8 @@
       margin-right: 20px;
       cursor: pointer;
       color: white;
+  }
+
+  .textarea {
+    height: 20px;
   }

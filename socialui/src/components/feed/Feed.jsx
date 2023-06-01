@@ -1,11 +1,16 @@
-import React from 'react'
-// import Post1 from '../Assets/post1.avif'
-// import Post2 from '../Assets/post2.avif'
-import Heart from "../Assets/heart.png"
-import Like from "../Assets/like.png"
+import React, { useState } from 'react'
+import Likes from "../Assets/likes.png"
+
 import "./Feed.css"
 
 const Feed = ({name, time, desc, postImg}) => {
+
+  const [likeCount, setLikeCount] = useState(0)
+
+  const handleLikes = () => {
+    setLikeCount(likeCount + 1)
+    console.log("clicked")
+  }
   return (
     <div className="feed">
         <div className="feed-wrapper">
@@ -15,9 +20,9 @@ const Feed = ({name, time, desc, postImg}) => {
             </div>
             <p>{desc}</p>
             <img src={postImg} alt="post1" className='main-feed-img'/>
-            <span>
-                <img src={Heart} alt="heart" className='likebtn'/>
-                <img src={Like} alt="heart" className='likebtn'/>
+            <span className='like-delete-icons'>
+                <img src={Likes} alt="heart" className='likebtn' onClick={handleLikes}/>
+                <h3>{likeCount}</h3>
             </span> 
         </div>
         <hr/>

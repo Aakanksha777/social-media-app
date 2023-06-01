@@ -1,9 +1,18 @@
+.feed {
+    /* background-color: rgb(231, 227, 227); */
+    width: 60%;
+}
 .feed-wrapper {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    align-items: center;
     justify-content: center;
-    margin-inline: 60px;
+    margin-inline: auto;
+    background-color: aliceblue;
+    max-width: 90%;
+    /* border: 0.4px solid gray; */
+    box-shadow: 5px 10px 8px #888888;
+    margin-bottom: 35px;
 }
 
 .main-feed-img {
@@ -18,9 +27,17 @@
     margin: 4px;
 }
 
-
+.feed-header {
+    text-align: start;
+}
 
 .feed-username {
     margin: 0;
     padding: 2px;
+}
+
+.like-delete-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
 }

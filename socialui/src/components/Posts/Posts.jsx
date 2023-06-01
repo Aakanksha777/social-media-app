@@ -1,16 +1,31 @@
-import React from 'react'
+// import React, {useEffect, useState} from 'react'
 import Person1 from '../Assets/person1.webp'
+// import axios from 'axios'
 import "./Posts.css"
 
 const Posts = () => {
+
+//   const [sharePost, setSharepost] = useState('');
+
+//   const fetchData = async () => {
+//     const {data} = await axios.get("post/get-post/6475fccc5860298168c60796")
+//     console.log(data)
+//     setSharepost(data)
+// }
+
+//   useEffect (() => {
+//     fetchData();
+//   }, [])
+
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
           <img className="shareProfileImg" src={Person1} alt="" />
-          <input
+          <textarea
             placeholder="Share Your Thoughts..."
             className="shareInput"
+            
           />
         </div>
         <hr className="shareHr"/>
