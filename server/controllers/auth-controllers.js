@@ -37,7 +37,7 @@ const loginUser = async (req, res) => {
         if(!validPswd) {
             res.status(401).json("Invalid Password")
         }
-
+        // window.location.replace("/home");// trying
         res.status(200).json(user)
       
     } catch (error) {

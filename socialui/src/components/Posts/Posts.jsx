@@ -1,21 +1,12 @@
 // import React, {useEffect, useState} from 'react'
 import Person1 from '../Assets/person1.webp'
-// import axios from 'axios'
 import "./Posts.css"
 
 const Posts = () => {
 
-//   const [sharePost, setSharepost] = useState('');
-
-//   const fetchData = async () => {
-//     const {data} = await axios.get("post/get-post/6475fccc5860298168c60796")
-//     console.log(data)
-//     setSharepost(data)
-// }
-
-//   useEffect (() => {
-//     fetchData();
-//   }, [])
+const handleShare = (e) => {
+  console.log(e.target.value)
+}
 
   return (
     <div className="share">
@@ -48,8 +39,7 @@ const Posts = () => {
                     <span className="shareOptionText">Feelings</span>
                 </div>
             </div>
-            <button className="shareButton">Share</button>
-        </div>
+            <button className="shareButton" onClick={handleShare}>Share</button>        </div>
       </div>
     </div>
   )

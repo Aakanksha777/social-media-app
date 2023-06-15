@@ -1,33 +1,74 @@
-import { useContext, useRef } from "react";
+import { useEffect, useState } from "react";
 import "./Login.css";
-import { loginCall } from "../../apiCalls";
-import { AuthContext } from "../../context/AuthContext";
 
 export default function Login() {
+  const [loginData, setLoginData] = useState({
+    email:"",
+    password:""
+  });
 
-  const email = useRef();
-  const password = useRef();
-  const {user, isFetching, error, dispatch} = useContext(AuthContext)
+  const [showPassword, setShowPassword] = useState(false);
 
-  const formSubmit = (e) => {
+  const handleLoginInputs = (e) => {
     e.preventDefault();
-    loginCall({email:email.current.value, password:password.current.value}, dispatch)
+    setLoginData({...loginData, [e.target.name] : e.target.value});
   }
+//LOGIN 
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitting")
+    fetch("http://localhost:8800/social/auth/login", {
+      method : "post",
+      headers : {
+        "Content-Type" : "application/json",
+      },
+      body : JSON.stringify(loginData)
+    })
+  .then((res) => res.json())
+  .then((data) => {
+    window.location.replace("/home");// redirect to another page
+    console.log("final Login Data", data)
+  })
+};
 
-  console.log("user", user)
+
+  useEffect((e) => {
+    console.log("login Data", loginData)
+  }, [loginData]);
+
+
+  //REGISTER 
   return (
     <>
     <div className="login">
 
     <h1 className="login-header">Social App</h1>
-          <form className="loginBox" onSubmit={formSubmit}>
-            <input placeholder="Email" className="loginInput" ref={email} required type="email"/>
-            <input placeholder="Password" className="loginInput" ref={password} required type="password"/>
-            <button className="loginButton">Log In</button>
+          <form className="loginBox" onSubmit={handleLoginSubmit}>
+
+            <input 
+            placeholder="Email" 
+            className="loginInput" 
+            required 
+            type="email"
+            name="email"
+            value={loginData.email}
+            onChange={handleLoginInputs}/>
+
+            <input 
+            placeholder="Password" 
+            className="loginInput" 
+            required 
+            type={showPassword ? "" : "password"}
+            name="password"
+            value={loginData.password}
+            onChange={handleLoginInputs}/>
+            <span onClick={() => setShowPassword(!showPassword)} className="passwordIcon">&#128065;</span>
+
+
+            <button className="loginButton" type="submit" >Log In</button>
             <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">
-              Create a New Account
-            </button>
+            <a href="/register"  className="loginRegisterButton" >Create a New Account</a>
+           
         </form>
     </div>
     </>
