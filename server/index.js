@@ -31,6 +31,7 @@ app.use(morgan("common")); // res :  [29/May/2023:10:29:08 +0000] "GET /user HTT
 app.use(cors());
 
 //routes
+
 // app.use('/social/user', user);
 app.use("/social/user", userRoute);
 app.use("/social/auth", authRoute);
