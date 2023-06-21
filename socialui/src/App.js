@@ -1,20 +1,22 @@
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 
-import {  BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   return (
-    <BrowserRouter>
     <Routes>
-
-    <Route path="/" element={<Login />}></Route>
-    <Route exact path="/home" element={<HomePage />}> </Route>
-    <Route exact path="/register" element={<Register />}> </Route>
-
+      {/* Anyone can access these routes */}
+      <Route path="login" element={<Login />} />
+      <Route path="/register" element={<Register />}></Route>
+      
+      {/* Only Loggedin user can access these routes */}
+      <Route path="/" element={<ProtectedRoute />}>
+        <Route path="home" element={<HomePage />} />
+      </Route>
     </Routes>
-    </BrowserRouter>
   );
 }
 
