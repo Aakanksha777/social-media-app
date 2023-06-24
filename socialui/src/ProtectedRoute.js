@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const ProtectedRoute = (props) => {
   const navigate = useNavigate();
@@ -16,9 +16,10 @@ const ProtectedRoute = (props) => {
 
   useEffect(() => {
     checkUserToken();
+    console.log(isLoggedIn);
   }, [isLoggedIn]);
 
-  return <>{isLoggedIn ? props.children : null}</>;
+  return <>{isLoggedIn ? <Outlet /> : null}</>;
 };
 
 export default ProtectedRoute;

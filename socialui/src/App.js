@@ -11,10 +11,10 @@ function App() {
       {/* Anyone can access these routes */}
       <Route path="login" element={<Login />} />
       <Route path="/register" element={<Register />}></Route>
-      
+
       {/* Only Loggedin user can access these routes */}
       <Route path="/" element={<ProtectedRoute />}>
-        <Route path="home" element={<HomePage />} />
+        <Route index element={<HomePage />} />
       </Route>
     </Routes>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +18,7 @@ export default function Login() {
   //LOGIN
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    console.log("submitting");
+
     fetch("http://localhost:8800/social/auth/login", {
       method: "post",
       headers: {
@@ -28,17 +28,10 @@ export default function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
+        localStorage.setItem("user-token", JSON.stringify(data));
         navigate("/home");
-        console.log("final Login Data", data);
       });
   };
-
-  useEffect(
-    (e) => {
-      console.log("login Data", loginData);
-    },
-    [loginData]
-  );
 
   //REGISTER
   return (
