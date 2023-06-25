@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Login({ isLoggedIn }) {
   const navigate = useNavigate();

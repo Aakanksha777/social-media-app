@@ -1,20 +1,21 @@
-import Login from "./components/login/Login";
-import Register from "./components/register/Register";
-
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import ProtectedRoute from "./ProtectedRoute";
 import { useEffect, useState } from "react";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
 
-  const handleLogin = (boolean) => {
+  const handleLogin = (boolean, user = {}) => {
     setIsLoggedIn(boolean);
+    setUser(user);
   };
 
   useEffect(() => {
-    console.log(isLoggedIn);
+    console.log(isLoggedIn, user);
   }, [isLoggedIn]);
 
   return (
@@ -30,7 +31,7 @@ function App() {
           <ProtectedRoute handleLogin={handleLogin} isLoggedIn={isLoggedIn} />
         }
       >
-        <Route index element={<HomePage />} />
+        <Route index element={<HomePage user={user} />} />
       </Route>
     </Routes>
   );

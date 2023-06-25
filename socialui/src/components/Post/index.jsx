@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Likes from "../../Assets/likes.png";
 
-import "./Feed.css";
+import "./Post.css";
 
-const Feed = ({ name, time, desc, postImg }) => {
+const Post = ({ name, time, desc, postImg }) => {
   const [likeCount, setLikeCount] = useState(0);
 
   const handleLikes = () => {
@@ -29,9 +29,8 @@ const Feed = ({ name, time, desc, postImg }) => {
           <h3>{likeCount}</h3>
         </span>
       </div>
-      <hr />
     </div>
   );
 };
 
-export default Feed;
+export default Post;

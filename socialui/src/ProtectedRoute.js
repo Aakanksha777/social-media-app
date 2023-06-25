@@ -9,7 +9,7 @@ const ProtectedRoute = ({ handleLogin, isLoggedIn }) => {
       handleLogin(false);
       return navigate("/login");
     }
-    handleLogin(true);
+    handleLogin(true, JSON.parse(userToken));
   };
 
   useEffect(() => {
