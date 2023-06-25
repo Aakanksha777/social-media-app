@@ -1,24 +1,28 @@
-.post__container{
-  max-width: 550px;
+.add__post__container {
+  max-width: 600px;
   width: 100%;
   background-color: white;
   display: flex;
   padding: 1rem 2rem;
   gap: 10px;
+  margin-inline: auto;
 }
-.logged__user__img{
+
+.logged__user__img {
   width: 50px;
   height: 50px;
   object-fit: cover;
   flex-shrink: 0;
   border-radius: 50%;
 }
-.add__post{
+
+.add__post {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-.post__data{
+
+.post__data {
   resize: none;
   background-color: #f7f7f7;
   border: none;
@@ -27,8 +31,9 @@
   font-size: 1.2rem;
   outline: none;
 }
-.submit__post{
-  margin-top: 15px; 
+
+.submit__post {
+  margin-top: 15px;
   background-color: #ff3b30;
   padding: 0.6rem 2rem;
   border: none;

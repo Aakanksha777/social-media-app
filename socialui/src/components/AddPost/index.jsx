@@ -30,7 +30,7 @@ const AddPost = ({ userId }) => {
       })
   };
   return (
-    <div className="post__container">
+    <div className="add__post__container">
       <img src="" className="logged__user__img" alt="Profile Picture" />
       <form onSubmit={handleAddPost} className="add__post">
         <textarea

@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import Likes from "../../Assets/likes.png";
-
 import "./Post.css";
 
-const Post = ({ name, time, desc, postImg }) => {
-  const [likeCount, setLikeCount] = useState(0);
+
+const Post = ({ name, createdAt, description, img, likes }) => {
+  const [likeCount, setLikeCount] = useState(likes.length);
 
   const handleLikes = () => {
     setLikeCount(likeCount + 1);
-    console.log("clicked");
   };
+
   return (
     <div className="feed">
       <div className="feed-wrapper">
         <div className="feed-header">
           <h3 className="feed-username">{name}</h3>
-          <small>{time}</small>
+          <small>{createdAt}</small>
         </div>
-        <p>{desc}</p>
-        <img src={postImg} alt="post1" className="main-feed-img" />
+        <p>{description}</p>
+        <img src={img} alt="post1" className="main-feed-img" />
         <span className="like-delete-icons">
           <img
             src={Likes}
