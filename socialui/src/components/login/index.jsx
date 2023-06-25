@@ -30,8 +30,13 @@ export default function Login({ isLoggedIn }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        localStorage.setItem("user-token", JSON.stringify(data));
-        navigate("/");
+        console.log("data", data);
+        if (data.status === 200) {
+          localStorage.setItem("user-token", JSON.stringify(data.body));
+          navigate("/");
+        } else {
+          console.error(data.error)
+        }
       });
   };
 

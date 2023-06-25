@@ -4,7 +4,8 @@
   "description": "Social media app ",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +19,8 @@
     "mongoose": "^7.2.1",
     "mongoose-unique-validator": "^4.0.0",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

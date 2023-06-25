@@ -1,7 +1,14 @@
 const router = require("express").Router();
-const Post = require('../model/post-model');
-const User = require("../model/user-model");
-const {createPost, updatePost, deletePost, likeDislikePost, getPostById, getAllPostById} = require("../controllers/post-controllers")
+
+const {
+  createPost,
+  updatePost,
+  deletePost,
+  likeDislikePost,
+  getPostById,
+  getAllPostById,
+  getAllPostForUser,
+} = require("../controllers/post-controllers");
 //create
 //put userid as Exisiting user;s mongo ID.
 
@@ -9,11 +16,12 @@ const {createPost, updatePost, deletePost, likeDislikePost, getPostById, getAllP
 //In URL give monogodb obj ID
 // and in body put userid of existing post.
 
-router.route('/create-post').post(createPost) //create-post
-router.route("/update-post/:id").put(updatePost) //update-post
-router.route("/delete-post/:id").delete(deletePost) //delete-post
-router.route("/like-dislike-post/:id").put(likeDislikePost) //like-dislike
-router.route("/get-post/:id").get(getPostById) //get post by Id
-router.route("/timeline/all").get(getAllPostById);
+router.route("/create-post").post(createPost); //create-post
+router.route("/update-post/:postId").put(updatePost); //update-post
+router.route("/delete-post/:postId").delete(deletePost); //delete-post
+router.route("/like-dislike-post/:postId").put(likeDislikePost); //like-dislike
+router.route("/get-one-post/:postId").get(getPostById); //get a single post by post Id
+router.route("/get-post/:userId").get(getAllPostById); //get personal post by user Id
+router.route("/timeline/all/:userId").get(getAllPostForUser); //get followers post by user Id
 
 module.exports = router;

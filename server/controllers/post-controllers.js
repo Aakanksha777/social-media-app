@@ -18,7 +18,7 @@ const updatePost = async (req, res) => {
       await post.updateOne({ $set: req.body });
       res.status(200).json(post);
     } else {
-      res.status(403).json("You can only update your posts.");
+      res.status(403).json({ error: "You can only update your posts." });
     }
   } catch (err) {
     res.status(500).json(err);
@@ -30,9 +30,9 @@ const deletePost = async (req, res) => {
     const post = await Post.findById(req.params.id);
     if (req.body.userId === post.userId) {
       await post.deleteOne();
-      res.status(200).json("Post is Deleted..");
+      res.status(200).json("Post is Deleted.");
     } else {
-      res.status(403).json("You can only delete your posts.");
+      res.status(403).json({ error: "You can only delete your posts." });
     }
   } catch (err) {
     res.status(500).json(err);
@@ -66,18 +66,29 @@ const getPostById = async (req, res) => {
 const getAllPostById = async (req, res) => {
   try {
     const currentUser = await User.findById(req.params.userId);
-    const userPosts = await Post.find({ userId: currentUser._id });
-    const friendPosts = await Promise.all(
-      currentUser.followings.map((friendId) => {
-        return Post.find({ userId: friendId });
-      })
+    const userPosts = await Post.find({ userId: currentUser._id }).populate(
+      "user"
     );
-    res.json(userPosts.concat(...friendPosts));
+    res.status(200).json(userPosts);
   } catch (err) {
     res.status(500).json(err);
   }
 };
+const getAllPostForUser = async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.params.userId);
+    console.log(currentUser);
 
+    const friendPosts = await Promise.all(
+      currentUser.following.map((friendId) => {
+        return Post.find({ userId: friendId });
+      })
+    );
+    res.status(200).json(friendPosts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 module.exports = {
   createPost,
   updatePost,
@@ -85,4 +96,5 @@ module.exports = {
   likeDislikePost,
   getPostById,
   getAllPostById,
+  getAllPostForUser,
 };

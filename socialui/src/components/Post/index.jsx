@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Likes from "../../Assets/likes.png";
 import "./Post.css";
 
-
 const Post = ({ name, createdAt, description, img, likes }) => {
   const [likeCount, setLikeCount] = useState(likes.length);
 

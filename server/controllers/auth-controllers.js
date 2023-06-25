@@ -11,17 +11,16 @@ const registerUser = async (req, res) => {
     if (isUserExist)
       return res.status(402).json({ error: "user email already exist" });
     //create new user :
-    const newUser = await new User({
+    const newUser = new User({
       username,
       email,
       password: hashedpswd,
     });
-
     //save user and response
     const user = await newUser.save();
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).json({ error: "API failed" });
+    res.status(500).json({ error: error });
   }
 };
 
@@ -31,16 +30,16 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ email });
     //checking onlu email:
     if (!user) {
-      res.status(404).json("User not Found");
+      res.status(404).json({ error: "User not Found" });
     }
     const validPswd = await bcrypt.compare(password, user.password);
     if (!validPswd) {
-      res.status(401).json("Invalid Password");
+      res.status(401).json({ error: "Invalid Password" });
     }
     // window.location.replace("/home");// trying
-    res.status(200).json(user);
+    res.status(200).json({ status: 200, body: user, error: "" });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({ error: error });
   }
 };
 

@@ -34,7 +34,6 @@ export default function Register() {
     })
       .then((res) => res.json())
       .then((data) => {
-        debugger;
         if (data.status === 200) {
           navigate("/login");
           console.log("final Data", data);
