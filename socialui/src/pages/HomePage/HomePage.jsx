@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
-import Posts from "../../components/Posts/Posts";
+import Posts from "../../components/AddPost/AddPost";
 import Feed from "../../components/feed/Feed";
 import "./HomePage.css";
 

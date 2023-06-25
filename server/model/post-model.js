@@ -1,33 +1,33 @@
 const mongoose = require("mongoose");
 
-
-const PostSchema = new mongoose.Schema (
-    {
-        userId : {
-            type : String,
-            require : true
-        },
-        time : {
-            type: Date,
-            default: Date.now,
-        },
-        
-        desc : {
-            type : String,
-            max : 500
-        },
-
-        img:{
-            type:String,
-        },
-
-        likes : {
-            type : Array,
-            default : [],
-        }
+const PostSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: String,
+      require: true,
     },
 
-    {timestamps : true}
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+
+    description: {
+      type: String,
+      max: 500,
+    },
+
+    img: {
+      type: String,
+    },
+
+    likes: {
+      type: Array,
+      default: [],
+    },
+  },
+
+  { timestamps: true }
 );
 
-module.exports = mongoose.model("Post", PostSchema)
+module.exports = mongoose.model("Post", PostSchema);
