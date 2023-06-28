@@ -2,11 +2,10 @@ const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema(
   {
-    userId: {
-      type: String,
-      require: true,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
-
     createdAt: {
       type: Date,
       default: Date.now,

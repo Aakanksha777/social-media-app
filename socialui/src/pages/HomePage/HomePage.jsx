@@ -1,24 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Posts from "../../components/AddPost";
-import Post from "../../components/Post";
+import PostList from "../../components/PostList";
 import "./HomePage.css";
 
-import Post1 from "../../Assets/post1.avif";
-
 const HomePage = ({ user }) => {
+  const { _id: userId } = user
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    fetch(`http://localhost:8800/social/post/timeline/all/${userId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 200) {
+          setPosts(data.data)
+        } else {
+          console.error(data.error)
+        }
+      });
+  }, [])
   return (
     <div className="main-homePage">
       <Navbar />
       <div className="post-feed-container">
-        <Posts userId={user._id} />
+        <Posts userId={userId} />
         <div className="feed-card">
-          <Post
-            name="Aakanksha Malothia"
-            time="now"
-            postImg={Post1}
-            likes={["jvsc", "khsg"]}
-            desc="What you need to remember is Breathe..."
+          <PostList
+            posts={posts}
           />
         </div>
       </div>

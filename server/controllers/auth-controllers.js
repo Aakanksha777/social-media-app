@@ -28,16 +28,15 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-    //checking onlu email:
+    //checking only email: //talk about this return error
     if (!user) {
-      res.status(404).json({ error: "User not Found" });
+      return res.status(404).json({ error: "User not Found" });
     }
     const validPswd = await bcrypt.compare(password, user.password);
     if (!validPswd) {
-      res.status(401).json({ error: "Invalid Password" });
+      return res.status(401).json({ error: "Invalid Password" });
     }
-    // window.location.replace("/home");// trying
-    res.status(200).json({ status: 200, body: user, error: "" });
+    return res.status(200).json({ status: 200, body: user, error: "" });
   } catch (error) {
     res.status(500).json({ error: error });
   }
