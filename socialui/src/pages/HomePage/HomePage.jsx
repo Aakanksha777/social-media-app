@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import Posts from "../../components/AddPost";
+import AddPost from "../../components/AddPost";
 import PostList from "../../components/PostList";
 import "./HomePage.css";
 
@@ -23,7 +23,7 @@ const HomePage = ({ user }) => {
     <div className="main-homePage">
       <Navbar />
       <div className="post-feed-container">
-        <Posts userId={userId} />
+        <AddPost userId={userId} />
         <div className="feed-card">
           <PostList
             posts={posts}

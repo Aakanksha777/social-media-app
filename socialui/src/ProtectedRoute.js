@@ -3,6 +3,7 @@ import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 const ProtectedRoute = ({ handleLogin, isLoggedIn }) => {
   const navigate = useNavigate();
+  
   const checkUserToken = () => {
     const userToken = localStorage.getItem("user-token");
     if (!userToken || userToken === "undefined") {

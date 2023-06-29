@@ -2,7 +2,18 @@ import React, { useState } from "react";
 import Likes from "../../Assets/likes.png";
 import "./Post.css";
 
-const Post = ({post}) => {
+// const post = {
+//   description: "Some post ",
+//   img: ["link::/"],
+//   likes: ["userids"],
+//   createdAt: Date.now(),
+//   user: {
+//     username: "surya777",
+//     email: "surya777@gmail.com"
+//   },
+//   updatedAt: Date.now()
+// }
+const Post = ({ post }) => {
   const { description, img, likes, createdAt, user, updatedAt } = post
   const { username, email } = user
 
