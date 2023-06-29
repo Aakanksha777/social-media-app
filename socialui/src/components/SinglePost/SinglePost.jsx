@@ -1,8 +1,8 @@
 import React from 'react'
 import './SinglePost.css'
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import CommentIcon from '@mui/icons-material/Comment';
-import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import { BiCommentDetail, BiSolidCommentDetail } from 'react-icons/bi'
+import { BsBookmarkPlus, BsBookmarkPlusFill } from 'react-icons/bs'
+import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
 
 const SinglePost = ({ post }) => {
   const { userImage, userName, DateTime, userHandle, postDesc, PostImage } = post
@@ -22,9 +22,9 @@ const SinglePost = ({ post }) => {
           <div className="single-post-desc">{postDesc}</div>
           <div className="single-post-image">{PostImage}</div>
           <div className="single-post-like-comment">
-            <FavoriteIcon />
-            <CommentIcon />
-            <BookmarksIcon />
+            <AiOutlineLike />
+            <BiCommentDetail />
+            <BsBookmarkPlus />
           </div>
         </div>
       </div>
