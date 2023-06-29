@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import ProtectedRoute from "./ProtectedRoute";
 import { useEffect, useState } from "react";
-import Register from "./components/Register";
-import Login from "./components/Login";
+import Register from "./components/register/index";
+import Login from "./components/login/index";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

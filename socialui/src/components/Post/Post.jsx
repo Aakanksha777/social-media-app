@@ -31,7 +31,7 @@ const Post = ({post}) => {
           className="likebtn"
           onClick={handleLikes}
         />
-        <h3>{likeCount}</h3>
+        <h3>{likeCount} post</h3>
       </span>
     </div>
   );

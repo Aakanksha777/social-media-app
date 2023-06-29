@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import Posts from "../../components/AddPost";
-import PostList from "../../components/PostList";
+import AddPost from "../../components/AddPost/AddPost";
+import PostList from "../../components/PostList/index";
+import SinglePost from "../../components/SinglePost/SinglePost";
 import "./HomePage.css";
 
 const HomePage = ({ user }) => {
@@ -23,13 +24,13 @@ const HomePage = ({ user }) => {
     <div className="main-homePage">
       <Navbar />
       <div className="post-feed-container">
-        <Posts userId={userId} />
+        <AddPost userId={userId} />
         <div className="feed-card">
-          <PostList
-            posts={posts}
-          />
+          <PostList posts={posts}/>
         </div>
       </div>
+      <SinglePost/>
+
     </div>
   );
 };

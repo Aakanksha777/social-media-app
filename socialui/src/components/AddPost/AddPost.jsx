@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./AddPost.css";
 
 const AddPost = ({ userId }) => {
@@ -31,7 +31,7 @@ const AddPost = ({ userId }) => {
   };
   return (
     <div className="add__post__container">
-      <img src="" className="logged__user__img" alt="Profile Picture" />
+      <img src="" className="logged__user__img" alt="Profile Pic" />
       <form onSubmit={handleAddPost} className="add__post">
         <textarea
           placeholder="Write something interesting..."
