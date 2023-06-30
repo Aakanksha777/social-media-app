@@ -30,11 +30,11 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ email });
     //checking only email: //talk about this return error
     if (!user) {
-      return res.status(404).json({ error: "User not Found" });
+      return res.status(404).json({ status: 404, error: "User not Found" });
     }
     const validPswd = await bcrypt.compare(password, user.password);
     if (!validPswd) {
-      return res.status(401).json({ error: "Invalid Password" });
+      return res.status(401).json({ status: 401, error: "Invalid Password" });
     }
     return res.status(200).json({ status: 200, body: user, error: "" });
   } catch (error) {

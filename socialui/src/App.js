@@ -2,8 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import ProtectedRoute from "./ProtectedRoute";
 import { useEffect, useState } from "react";
-import Register from "./components/register/index";
-import Login from "./components/login/index";
+import Register from "./components/Register/Register";
+import Login from "./components/Login/Login";
+import ExploreFeeds from "./pages/Explore";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,6 +24,7 @@ function App() {
       {/* Anyone can access these routes */}
       <Route path="login" element={<Login isLoggedIn={isLoggedIn} />} />
       <Route path="register" element={<Register isLoggedIn={isLoggedIn} />} />
+      <Route path="user-feed" element={<ExploreFeeds />} />
 
       {/* Only Loggedin user can access these routes */}
       <Route

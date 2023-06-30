@@ -1,24 +1,13 @@
 import React from 'react'
 import './SinglePost.css'
-import Person1 from '../../Assets/person1.webp';
-import Post2 from '../../Assets/post2.avif';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import CommentIcon from '@mui/icons-material/Comment';
-import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import { BiCommentDetail, BiSolidCommentDetail } from 'react-icons/bi'
+import { BsBookmarkPlus, BsBookmarkPlusFill } from 'react-icons/bs'
+import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
 
-const singlePostData = [
-    {
-        userImage : Person1,
-        userName: "Aakanksha Malothia",
-        DateTime : "25/10/2023",
-        userHandle : "@Aakanksha777",
-        postDesc : "Went to this hangout place, Bob's in Marathalli yesterday. The ambience is real good and the mocktails are really fresh.",
-        PostImage : Post2
-    }
-]
-
-const SinglePost = () => {
+const SinglePost = ({ post }) => {
+  const { userImage, userName, DateTime, userHandle, postDesc, PostImage } = post
   return (
+<<<<<<< HEAD
     <div className='single-post-main-container'>
       <h2>SinglePost</h2>
       {singlePostData.map(({userImage, userName, DateTime, userHandle, postDesc, PostImage}) => (
@@ -51,8 +40,29 @@ const SinglePost = () => {
 
             </div>
            
+=======
+    <div className='single-post-container'>
+      <div className="single-post-userimg">
+        <img src={userImage} alt='single-post' className="single-post-userimg-img" />
+      </div>
+      <div className="single-post-user-top-flex">
+        <div className="single-post-userInfo">
+          <div className="single-user-name">{userName}</div>
+          <div className="single-user-date">{DateTime}</div>
+          <div className="single-user-pin">...</div>
+>>>>>>> 50a48d5b04048adee7ab222d0f8822efe910db21
         </div>
-      ))}
+        <div className="single-user-handle">{userHandle}</div>
+        <div className="single-post-lower-container">
+          <div className="single-post-desc">{postDesc}</div>
+          <div className="single-post-image">{PostImage}</div>
+          <div className="single-post-like-comment">
+            <AiOutlineLike />
+            <BiCommentDetail />
+            <BsBookmarkPlus />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
