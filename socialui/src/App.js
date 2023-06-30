@@ -34,6 +34,7 @@ function App() {
         }
       >
         <Route index element={<HomePage user={user} />} />
+        <Route path="/explore-feeds" element={<ExploreFeeds user={user} />} />
       </Route>
     </Routes>
   );

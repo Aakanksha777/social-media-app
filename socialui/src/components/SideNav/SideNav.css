@@ -1,0 +1,17 @@
+.sidenav__container {
+    position: fixed;
+    left: 0;
+    top: 100px;
+    padding: 20px 50px;
+    height: 100%;
+}
+
+.nav__name {
+    text-decoration: unset;
+    color: Grey;
+    font-size: 20px;
+}
+
+.nav__links {
+    padding-block: 10px;
+}

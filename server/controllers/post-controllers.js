@@ -65,6 +65,19 @@ const getPostById = async (req, res) => {
   }
 };
 
+const getAllPosts = async (req, res) => {
+  try {
+    const allPosts = await Post.find({}).populate("user", {
+      username: 1,
+      email: 1,
+    });
+    res.status(200).json({ status: 200, data: allPosts, error: "" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+};
+
 const getAllPostOfCurrUser = async (req, res) => {
   try {
     const currentUser = await User.findById(req.params.userId);
@@ -98,6 +111,7 @@ module.exports = {
   deletePost,
   likeDislikePost,
   getPostById,
+  getAllPosts,
   getAllPostOfCurrUser,
   getAllPostExceptCurrUser,
 };

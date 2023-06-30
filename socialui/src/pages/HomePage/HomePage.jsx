@@ -5,26 +5,26 @@ import PostList from "../../components/PostList/PostList";
 import "./HomePage.css";
 
 
-import Person1 from '../../Assets/person1.webp';
-import Post2 from '../../Assets/post2.avif';
+// import Person1 from '../../Assets/person1.webp';
+// import Post2 from '../../Assets/post2.avif';
 
-const singlePostData = [
-  {
-    userImage: Person1,
-    userName: "Aakanksha Malothia",
-    DateTime: "25/10/2023",
-    userHandle: "@Aakanksha777",
-    postDesc: "Went to this hangout place, Bob's in Marathalli yesterday. The ambience is real good and the mocktails are really fresh.",
-    PostImage: Post2
-  }, {
-    userImage: Person1,
-    userName: "Aakanksha Malothia",
-    DateTime: "25/10/2023",
-    userHandle: "@Aakanksha777",
-    postDesc: "Went to this hangout place, Bob's in Marathalli yesterday. The ambience is real good and the mocktails are really fresh.",
-    PostImage: Post2
-  }
-]
+// const singlePostData = [
+//   {
+//     userImage: Person1,
+//     userName: "Aakanksha Malothia",
+//     DateTime: "25/10/2023",
+//     userHandle: "@Aakanksha777",
+//     postDesc: "Went to this hangout place, Bob's in Marathalli yesterday. The ambience is real good and the mocktails are really fresh.",
+//     PostImage: Post2
+//   }, {
+//     userImage: Person1,
+//     userName: "Aakanksha Malothia",
+//     DateTime: "25/10/2023",
+//     userHandle: "@Aakanksha777",
+//     postDesc: "Went to this hangout place, Bob's in Marathalli yesterday. The ambience is real good and the mocktails are really fresh.",
+//     PostImage: Post2
+//   }
+// ]
 
 const HomePage = ({ user }) => {
   const { _id: userId } = user
@@ -43,7 +43,6 @@ const HomePage = ({ user }) => {
   }, [])
   return (
     <div className="main-homePage">
-      <Navbar />
       <div className="post-feed-container">
         <AddPost userId={userId} />
         <div className="feed-card">

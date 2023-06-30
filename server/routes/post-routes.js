@@ -6,6 +6,7 @@ const {
   deletePost,
   likeDislikePost,
   getPostById,
+  getAllPosts,
   getAllPostOfCurrUser,
   getAllPostExceptCurrUser,
 } = require("../controllers/post-controllers");
@@ -23,5 +24,6 @@ router.route("/like-dislike-post/:postId").put(likeDislikePost); //like-dislike
 router.route("/get-one-post/:postId").get(getPostById); //get a single post by post Id
 router.route("/get-post/:userId").get(getAllPostOfCurrUser); //get personal post by user Id
 router.route("/timeline/all/:userId").get(getAllPostExceptCurrUser); //get followers post by user Id
+router.route("/all/").get(getAllPosts); //get followers post by user Id
 
 module.exports = router;

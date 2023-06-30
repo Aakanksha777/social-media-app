@@ -1,19 +1,16 @@
 .single-post-container {
-    border: 2px solid gray;
     display: flex;
-    width: 70%;
     background-color: lightgray;
-    margin: 28px;
+    margin-inline: auto;
 }
+
 .single-post-userimg {
-    /* border: 1px solid black; */
     margin: 5px;
 }
 
 .single-post-userimg-img {
-    /* border: 1px solid gray; */
     width: 20%;
-    border-radius:20px;
+    border-radius: 20px;
     height: 50px;
     width: 50px;
     object-fit: cover;
@@ -28,14 +25,11 @@
 .single-post-user-top-flex {
     display: flex;
     flex-direction: column;
-    /* border: 4px solid yellowgreen; */
 }
+
 .single-post-userInfo {
-    /* border : 1px solid red; */
     display: flex;
     justify-content: space-between;
-    /* padding: 10px; */
-    /* width: 60%; */
 }
 
 .single-user-name,
@@ -43,25 +37,27 @@
 .single-user-pin {
     margin: 10px;
 }
+
 .single-user-handle {
     font-style: italic;
 }
 
 .single-post-desc {
-   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-   font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
 }
 
 .single-post-image {
     padding: 10px;
 }
+
 .single-post-lower-container {
     /* border : 1px solid gray; */
     display: flex;
     flex-direction: column;
     padding: 15px;
     margin: 10px;
-   
+
 }
 
 .single-post-like-comment {

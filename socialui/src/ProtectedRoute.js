@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { SideNav } from "./components/SideNav/SideNav";
+import Navbar from "./components/navbar/Navbar";
 
 const ProtectedRoute = ({ handleLogin, isLoggedIn }) => {
   const navigate = useNavigate();
-  
+
   const checkUserToken = () => {
     const userToken = localStorage.getItem("user-token");
     if (!userToken || userToken === "undefined") {
@@ -17,7 +19,19 @@ const ProtectedRoute = ({ handleLogin, isLoggedIn }) => {
     checkUserToken();
   }, [isLoggedIn]);
 
-  return <>{isLoggedIn ? <Outlet /> : <Navigate to="login" />}</>;
+  return (
+    <>
+      {isLoggedIn ? (
+        <div className="main">
+          <Navbar />
+          <SideNav />
+          <Outlet />
+        </div>
+      ) : (
+        <Navigate to="login" />
+      )}
+    </>
+  );
 };
 
 export default ProtectedRoute;
