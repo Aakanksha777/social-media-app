@@ -2,6 +2,8 @@
     border: 2px solid gray;
     display: flex;
     width: 70%;
+    background-color: lightgray;
+    margin: 28px;
 }
 .single-post-userimg {
     /* border: 1px solid black; */
@@ -17,6 +19,10 @@
     object-fit: cover;
     flex-shrink: 0;
     border-radius: 50%;
+}
+
+.single-post-dot {
+    margin: 15px;
 }
 
 .single-post-user-top-flex {
@@ -41,6 +47,14 @@
     font-style: italic;
 }
 
+.single-post-desc {
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   font-size: 18px;
+}
+
+.single-post-image {
+    padding: 10px;
+}
 .single-post-lower-container {
     /* border : 1px solid gray; */
     display: flex;
@@ -53,7 +67,7 @@
 .single-post-like-comment {
     display: flex;
     justify-content: space-evenly;
-    border: 1px solid gray;
+    border: 1px solid palevioletred;
     border-radius: 10px;
     padding: 10px;
 }

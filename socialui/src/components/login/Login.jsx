@@ -4,6 +4,8 @@ import "./Login.css";
 
 export default function Login({ isLoggedIn }) {
   const navigate = useNavigate();
+
+  //states
   const [showPassword, setShowPassword] = useState(false);
   const [loginData, setLoginData] = useState({
     email: "",
