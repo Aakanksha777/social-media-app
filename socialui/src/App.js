@@ -35,7 +35,10 @@ function App() {
       >
         <Route index element={<HomePage user={user} />} />
         <Route path="/explore-feeds" element={<ExploreFeeds user={user} />} />
+        <Route path="/bookmark" element={<ExploreFeeds user={user} />} />
+        <Route path="/profile" element={<ExploreFeeds user={user} />} />
       </Route>
+      <Route path="*" element={<div>Not authorized</div>} />
     </Routes>
   );
 }

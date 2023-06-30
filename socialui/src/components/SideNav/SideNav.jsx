@@ -12,7 +12,7 @@ const sideNavData = [
     },
     {
         name: "Bookmark",
-        link: "/bookmarks"
+        link: "/bookmark"
     },
     {
         name: "Profile",
