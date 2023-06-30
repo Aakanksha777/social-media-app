@@ -43,6 +43,7 @@ const SinglePost = () => {
                     <p><FavoriteIcon/></p>
                     <p><CommentIcon/></p>
                     <p> <BookmarksIcon/></p>
+
                    
                    
                 </div>
