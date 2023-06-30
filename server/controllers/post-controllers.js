@@ -65,7 +65,7 @@ const getPostById = async (req, res) => {
   }
 };
 
-const getAllPostById = async (req, res) => {
+const getAllPostOfCurrUser = async (req, res) => {
   try {
     const currentUser = await User.findById(req.params.userId);
     const userPosts = await Post.find({ userId: currentUser._id });
@@ -75,13 +75,12 @@ const getAllPostById = async (req, res) => {
   }
 };
 
-const getAllPostForUser = async (req, res) => {
+const getAllPostExceptCurrUser = async (req, res) => {
   try {
     const currentUser = await User.findById(req.params.userId);
     const friendPosts = await Promise.all(
       currentUser.following.map((friendId) => {
-        console.log("id", friendId, req.params.userId);
-        return Post.find({ userId: friendId }).populate("user", {
+        return Post.find({ user: friendId }).populate("user", {
           username: 1,
           email: 1,
         });
@@ -99,6 +98,6 @@ module.exports = {
   deletePost,
   likeDislikePost,
   getPostById,
-  getAllPostById,
-  getAllPostForUser,
+  getAllPostOfCurrUser,
+  getAllPostExceptCurrUser,
 };
