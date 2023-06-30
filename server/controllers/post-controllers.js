@@ -7,7 +7,7 @@ const createPost = async (req, res) => {
     const currentUser = await User.findById(userId);
     const newPost = new Post({ ...postData, user: currentUser });
     const savedPost = await newPost.save();
-    res.status(200).json(savedPost);
+    res.status(200).json({ status: 200, body: savedPost, error: "" });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -74,6 +74,7 @@ const getAllPostById = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
 const getAllPostForUser = async (req, res) => {
   try {
     const currentUser = await User.findById(req.params.userId);

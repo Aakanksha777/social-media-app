@@ -47,7 +47,7 @@ const HomePage = ({ user }) => {
       <div className="post-feed-container">
         <AddPost userId={userId} />
         <div className="feed-card">
-          <PostList posts={singlePostData} />
+          <PostList posts={posts} />
         </div>
       </div>
     </div>
