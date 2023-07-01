@@ -25,7 +25,9 @@ const ProtectedRoute = ({ handleLogin, isLoggedIn }) => {
         <div className="main">
           <Navbar />
           <SideNav />
-          <Outlet />
+          <div className="main__container">
+            <Outlet />
+          </div>
         </div>
       ) : (
         <Navigate to="login" />

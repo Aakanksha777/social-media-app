@@ -1,16 +1,15 @@
-
-.post-feed-container{
-    /* border: 2px solid red; */
-    background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+.post-feed-container {
     padding: 15px;
 }
+
 .post-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
 }
+
 .feed-card {
     display: flex;
     flex-direction: column;
