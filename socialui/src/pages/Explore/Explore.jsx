@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PostList from "../../components/PostList/PostList"
-
+import Navbar from "../../components/navbar/Navbar";
+import "./Explore.css"
 const ExploreFeeds = ({ user }) => {
     const [posts, setPosts] = useState([])
 
@@ -17,7 +18,13 @@ const ExploreFeeds = ({ user }) => {
     }, [])
 
     return (
-        <PostList posts={posts} />
+        <div>
+            <Navbar />
+            <div className="explore__feeds">
+                <PostList posts={posts} />
+
+            </div>
+        </div>
     )
 }
 export default ExploreFeeds

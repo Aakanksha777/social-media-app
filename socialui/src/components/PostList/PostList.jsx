@@ -5,7 +5,7 @@ const PostList = ({ posts }) => {
   return (
     <div className='single-post-main-container'>
       {posts.map((singlePost) => (
-        <SinglePost post={singlePost} />
+        <SinglePost key={singlePost._id} post={singlePost} />
       ))}
     </div>
   );

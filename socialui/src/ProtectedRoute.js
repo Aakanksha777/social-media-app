@@ -3,7 +3,7 @@ import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { SideNav } from "./components/SideNav/SideNav";
 import Navbar from "./components/navbar/Navbar";
 
-const ProtectedRoute = ({ handleLogin, isLoggedIn }) => {
+const ProtectedRoute = ({ handleLogin, isLoggedIn, user }) => {
   const navigate = useNavigate();
 
   const checkUserToken = () => {
@@ -23,8 +23,8 @@ const ProtectedRoute = ({ handleLogin, isLoggedIn }) => {
     <>
       {isLoggedIn ? (
         <div className="main">
-          <Navbar />
-          <SideNav />
+          <Navbar isLoggedIn={isLoggedIn} />
+          <SideNav userId={user._id} />
           <div className="main__container">
             <Outlet />
           </div>

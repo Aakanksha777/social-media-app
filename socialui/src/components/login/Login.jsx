@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 export default function Login({ isLoggedIn }) {
   const navigate = useNavigate();
+  const location = useLocation()
 
   //states
   const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +14,7 @@ export default function Login({ isLoggedIn }) {
   });
 
   useEffect(() => {
+    console.log(location)
     if (isLoggedIn) navigate("/");
   }, [isLoggedIn]);
 

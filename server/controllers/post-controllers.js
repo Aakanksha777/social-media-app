@@ -70,6 +70,9 @@ const getAllPosts = async (req, res) => {
     const allPosts = await Post.find({}).populate("user", {
       username: 1,
       email: 1,
+      firstname: 1,
+      lastname: 1,
+      profileImage: 1,
     });
     res.status(200).json({ status: 200, data: allPosts, error: "" });
   } catch (err) {
@@ -96,6 +99,9 @@ const getAllPostExceptCurrUser = async (req, res) => {
         return Post.find({ user: friendId }).populate("user", {
           username: 1,
           email: 1,
+          firstname: 1,
+          lastname: 1,
+          profileImage: 1,
         });
       })
     );

@@ -17,10 +17,6 @@ function App() {
     setUser(user);
   };
 
-  useEffect(() => {
-    console.log(isLoggedIn, user);
-  }, [isLoggedIn]);
-
   return (
     <Routes>
       {/* Anyone can access these routes */}
@@ -32,7 +28,11 @@ function App() {
       <Route
         path="/"
         element={
-          <ProtectedRoute handleLogin={handleLogin} isLoggedIn={isLoggedIn} />
+          <ProtectedRoute
+            handleLogin={handleLogin}
+            isLoggedIn={isLoggedIn}
+            user={user}
+          />
         }
       >
         <Route index element={<HomePage user={user} />} />

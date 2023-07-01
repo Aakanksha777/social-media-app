@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./AddPost.css";
 
-const AddPost = ({ userId }) => {
+const AddPost = ({ userId, handleCloseModal }) => {
   const [post, setPost] = useState({
     description: "",
     userId: userId,
@@ -35,8 +35,9 @@ const AddPost = ({ userId }) => {
       })
   };
   return (
-    <div className="add__post__container">
+    <div className="add__post__container" style={{ position: handleCloseModal && "relative" }}>
       <img src="" className="logged__user__img" alt="Profile Pic" />
+      {handleCloseModal && <span className="close__btn" onClick={handleCloseModal}>X</span>}
       <form onSubmit={handleAddPost} className="add__post">
         <textarea
           placeholder="Write something interesting..."

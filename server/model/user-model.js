@@ -10,6 +10,13 @@ const UserSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    firstname: {
+      type: String,
+      required: true,
+    },
+    lastname: {
+      type: String,
+    },
     profileImage: {
       type: String,
       required: false,

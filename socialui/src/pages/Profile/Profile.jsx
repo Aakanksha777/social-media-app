@@ -1,8 +1,8 @@
 import ProfileFeatures from "../../components/ProfileFeatures/ProfileFeatures"
-
+import "./Profile.css"
 const Profile = () => {
     return (
-        <div>
+        <div className="profile__container">
             <ProfileFeatures />
         </div>
     )

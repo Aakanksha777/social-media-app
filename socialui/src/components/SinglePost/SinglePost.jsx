@@ -1,33 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './SinglePost.css'
 import { BiCommentDetail, BiSolidCommentDetail } from 'react-icons/bi'
 import { BsBookmarkPlus, BsBookmarkPlusFill } from 'react-icons/bs'
 import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
+import { calculateTimeAgo } from '../../utils/mainUtils'
 
 const SinglePost = ({ post }) => {
-  const { userImage, userName, DateTime, userHandle, postDesc, PostImage } = post
+  const { img, createdAt, userHandle, description, user } = post
+  const { username, firstname, lastname, profileImage } = user
+  const [timeAgo] = useState(calculateTimeAgo(createdAt))
+
   return (
     <div className='single-post-container'>
       <div className="single-post-userimg">
-        <img src={userImage} alt='single-post' className="single-post-userimg-img" />
+        <img src={profileImage} alt='Profile Pic' />
       </div>
       <div className="single-post-user-top-flex">
         <div className="single-post-userInfo">
-          <div className="single-user-name">{userName}<span className='single-post-dot'>&#9679;</span>{DateTime}</div>
-          {/* <div className="single-user-date">{DateTime}</div> */}
-          <div className="single-user-pin">  &#9675; &#9675; &#9675;</div>
+          <div className='single-fullname'>{firstname && firstname[0].toUpperCase()}{firstname && firstname.substr(1)}{" "}{lastname}</div>
+          <div className="single-username">@{username}</div>
+          <div className='time-ago'>{timeAgo.days && `${timeAgo.days} days`} {" "}{!timeAgo.days && timeAgo.hours && `${timeAgo.hours} hours`} {" "}{!timeAgo.days && !timeAgo.hours && timeAgo.minutes && `${timeAgo.minutes} minutes`}</div>
         </div>
         <div className="single-user-handle">{userHandle}</div>
         <div className="single-post-lower-container">
-          <div className="single-post-desc">{postDesc}</div>
+          <div className="single-post-desc">{description}</div>
           <div className="single-post-image">
-            <img src={PostImage} alt='single-post'/>
-            </div>
-          <div className="single-post-like-comment">
-            <AiOutlineLike />
-            <BiCommentDetail />
-            <BsBookmarkPlus />
+            {
+              img.length > 0 && img.map((image) => {
+                <img src={image} alt='single-post' className="single-post-img" />
+              })
+            }
           </div>
+        </div>
+        <div className="single-post-like-comment">
+          <AiOutlineLike className='icons' />
+          <BiCommentDetail className='icons' />
+          <BsBookmarkPlus className='icons' />
         </div>
       </div>
     </div>

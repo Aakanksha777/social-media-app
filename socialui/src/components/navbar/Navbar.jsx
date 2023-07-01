@@ -2,7 +2,7 @@ import React from 'react'
 import './Navbar.css'
 import { useNavigate } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
   const navigate = useNavigate()
   const handleLogOut = () => {
     localStorage.removeItem("user-token")
@@ -14,7 +14,7 @@ const Navbar = () => {
         <span className="logo">Logo</span>
       </div>
       <div className="topbarLinks">
-        <span className="topbarLink" onClick={handleLogOut}>Log Out</span>
+        {isLoggedIn && <span className="topbarLink" onClick={handleLogOut}>Log Out</span>}
       </div>
     </div>
   )

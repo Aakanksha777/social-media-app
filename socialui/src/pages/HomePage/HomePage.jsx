@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/navbar/Navbar";
 import AddPost from "../../components/AddPost/AddPost";
 import PostList from "../../components/PostList/PostList";
 import "./HomePage.css";

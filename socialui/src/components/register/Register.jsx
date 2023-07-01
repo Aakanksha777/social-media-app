@@ -6,6 +6,8 @@ export default function Register() {
   const navigate = useNavigate();
   const [registerData, setRegisterData] = useState({
     username: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -60,7 +62,22 @@ export default function Register() {
           onChange={handleInputs}
           required
         />
-
+        <input
+          placeholder="First Name"
+          className="loginInput"
+          name="firstname"
+          value={registerData.firstname}
+          onChange={handleInputs}
+          required
+        />
+        <input
+          placeholder="Last Name"
+          className="loginInput"
+          name="lastname"
+          value={registerData.lastname}
+          onChange={handleInputs}
+          required
+        />
         <input
           placeholder="Email"
           className="loginInput"

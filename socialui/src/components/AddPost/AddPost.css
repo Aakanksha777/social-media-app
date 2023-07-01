@@ -1,11 +1,9 @@
 .add__post__container {
-  max-width: 600px;
   width: 100%;
   background-color: white;
   display: flex;
   padding: 1rem 2rem;
   gap: 10px;
-  margin-inline: auto;
 }
 
 .logged__user__img {
@@ -41,4 +39,11 @@
   font-size: 1rem;
   max-width: 100px;
   align-self: flex-end;
+}
+
+.close__btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px 15px;
 }
