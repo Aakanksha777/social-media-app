@@ -4,7 +4,9 @@ import ProtectedRoute from "./ProtectedRoute";
 import { useEffect, useState } from "react";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
-import ExploreFeeds from "./pages/Explore";
+import ExploreFeeds from "./pages/Explore/Explore";
+import BookmarkFeeds from "./pages/Bookmarks/Bookmarks";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,8 +37,8 @@ function App() {
       >
         <Route index element={<HomePage user={user} />} />
         <Route path="/explore-feeds" element={<ExploreFeeds user={user} />} />
-        <Route path="/bookmark" element={<ExploreFeeds user={user} />} />
-        <Route path="/profile" element={<ExploreFeeds user={user} />} />
+        <Route path="/bookmark" element={<BookmarkFeeds user={user} />} />
+        <Route path="/profile" element={<Profile user={user} />} />
       </Route>
       <Route path="*" element={<div>Not authorized</div>} />
     </Routes>

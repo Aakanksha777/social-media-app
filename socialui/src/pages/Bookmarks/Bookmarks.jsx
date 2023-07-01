@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PostList from "../../components/PostList/PostList"
 
-const ExploreFeeds = ({ user }) => {
+const BookmarkFeeds = ({ user }) => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const ExploreFeeds = ({ user }) => {
     }, [])
 
     return (
-        < PostList posts={posts} />
+        <PostList posts={posts} />
     )
 }
-export default ExploreFeeds
+export default BookmarkFeeds
