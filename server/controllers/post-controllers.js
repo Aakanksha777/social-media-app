@@ -30,7 +30,7 @@ const updatePost = async (req, res) => {
 const deletePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    if (req.body.userId === post.userId) {
+    if (req.body.userId === post.user) {
       await post.deleteOne();
       res.status(200).json("Post is Deleted.");
     } else {
@@ -43,13 +43,16 @@ const deletePost = async (req, res) => {
 
 const likeDislikePost = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
-    if (!post.likes.includes(req.body.userId)) {
-      await post.updateOne({ $push: { likes: req.body.userId } });
-      res.status(200).json("liked the post");
+    const post = await Post.findById(req.params.postId);
+    const { userId } = req.body;
+    if (!post.likes.includes(userId)) {
+      await post.updateOne({ $push: { likes: userId } });
+      return res.status(200).json({ body: post, message: "Liked the post" });
     } else {
-      await post.updateOne({ $pull: { likes: req.body.userId } });
-      res.status(200).json("Disliked the post.");
+      await post.updateOne({ $pull: { likes: userId } });
+      return res
+        .status(200)
+        .json({ body: post, message: "Disliked the post." });
     }
   } catch (err) {
     res.status(500).json(err);
@@ -68,6 +71,7 @@ const getPostById = async (req, res) => {
 const getAllPosts = async (req, res) => {
   try {
     const allPosts = await Post.find({}).populate("user", {
+      id: 1,
       username: 1,
       email: 1,
       firstname: 1,
@@ -97,6 +101,7 @@ const getAllPostExceptCurrUser = async (req, res) => {
     const friendPosts = await Promise.all(
       currentUser.following.map((friendId) => {
         return Post.find({ user: friendId }).populate("user", {
+          id: 1,
           username: 1,
           email: 1,
           firstname: 1,

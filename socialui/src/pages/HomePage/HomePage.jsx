@@ -28,7 +28,6 @@ import "./HomePage.css";
 const HomePage = ({ user }) => {
   const { _id: userId } = user
   const [posts, setPosts] = useState([])
-
   useEffect(() => {
     fetch(`http://localhost:8800/social/post/timeline/all/${userId}`)
       .then((res) => res.json())
@@ -40,6 +39,7 @@ const HomePage = ({ user }) => {
         }
       });
   }, [])
+
   return (
     <div className="main-homePage">
       <div className="post-feed-container">

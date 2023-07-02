@@ -39,6 +39,7 @@
   font-size: 1rem;
   max-width: 100px;
   align-self: flex-end;
+  cursor: pointer;
 }
 
 .close__btn {
@@ -46,4 +47,5 @@
   right: 0;
   top: 0;
   padding: 10px 15px;
+  cursor: pointer;
 }

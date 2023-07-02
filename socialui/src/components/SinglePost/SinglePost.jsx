@@ -6,9 +6,31 @@ import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
 import { calculateTimeAgo } from '../../utils/mainUtils'
 
 const SinglePost = ({ post }) => {
-  const { img, createdAt, userHandle, description, user } = post
-  const { username, firstname, lastname, profileImage } = user
+  const { _id: postId, img, createdAt, likes, description, user } = post
+  const { _id: userId, username, firstname, lastname, profileImage } = user
   const [timeAgo] = useState(calculateTimeAgo(createdAt))
+  const [likeCount, setLikeCount] = useState(likes.length)
+  const [currUserLike, setCurrUserLike] = useState(likes.includes(userId))
+  const handleLike = async () => {
+    try {
+      const res = await fetch(`http://localhost:8800/social/post/like-dislike-post/${postId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: userId })
+      })
+      const message = await res.json()
+      console.log(message);
+    } catch (error) {
+      console.log(error);
+    }
+    if (currUserLike) {
+      setCurrUserLike(false)
+      setLikeCount(likeCount - 1)
+    } else {
+      setCurrUserLike(true)
+      setLikeCount(likeCount + 1)
+    }
+  }
 
   return (
     <div className='single-post-container'>
@@ -21,7 +43,6 @@ const SinglePost = ({ post }) => {
           <div className="single-username">@{username}</div>
           <div className='time-ago'>{timeAgo.days && `${timeAgo.days} days`} {" "}{!timeAgo.days && timeAgo.hours && `${timeAgo.hours} hours`} {" "}{!timeAgo.days && !timeAgo.hours && timeAgo.minutes && `${timeAgo.minutes} minutes`}</div>
         </div>
-        <div className="single-user-handle">{userHandle}</div>
         <div className="single-post-lower-container">
           <div className="single-post-desc">{description}</div>
           <div className="single-post-image">
@@ -33,7 +54,17 @@ const SinglePost = ({ post }) => {
           </div>
         </div>
         <div className="single-post-like-comment">
-          <AiOutlineLike className='icons' />
+          <div onClick={handleLike} className="like__btn">
+            {
+              currUserLike ?
+                <AiFillLike className='icons' />
+                :
+                <AiOutlineLike className='icons' />
+            }
+            <div className='like__count'>
+              {likeCount} Likes
+            </div>
+          </div>
           <BiCommentDetail className='icons' />
           <BsBookmarkPlus className='icons' />
         </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PostList from "../../components/PostList/PostList"
 import Navbar from "../../components/navbar/Navbar";
 import "./Explore.css"
+
 const ExploreFeeds = ({ user }) => {
     const [posts, setPosts] = useState([])
 
