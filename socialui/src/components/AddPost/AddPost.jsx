@@ -12,7 +12,6 @@ const AddPost = ({ userId, handleCloseModal, editPost }) => {
   };
 
   useEffect(() => {
-    console.log(editPost)
     if (editPost && Object.keys(editPost).length > 0) {
       const { description, userId } = editPost
       setPost({ description, userId })

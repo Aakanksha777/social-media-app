@@ -1,9 +1,12 @@
 import React from 'react'
-import AddPostModal from '../AddPostModal/AddPostModal'
+import AddPost from '../AddPost/AddPost'
+import Modal from '../Modal/Modal'
 
 const EditPost = ({ userId, handleCloseModal, editPost }) => {
     return (
-        <AddPostModal userId={userId} handleCloseModal={handleCloseModal} editPost={editPost} />
+        <Modal>
+            <AddPost userId={userId} handleCloseModal={handleCloseModal} editPost={editPost} />
+        </Modal>
     )
 }
 

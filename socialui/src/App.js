@@ -36,7 +36,10 @@ function App() {
         }
       >
         <Route index element={<HomePage user={user} />} />
-        <Route path="/explore-feeds" element={<ExploreFeeds user={user} />} />
+        <Route
+          path="/explore-feeds"
+          element={<ExploreFeeds userId={user?._id} />}
+        />
         <Route path="/bookmark" element={<BookmarkFeeds user={user} />} />
         <Route path="/profile" element={<Profile user={user} />} />
       </Route>

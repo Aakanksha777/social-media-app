@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
 import "./SideNav.css"
 import { useState } from "react"
-import AddPostModal from "../AddPostModal/AddPostModal"
+import AddPost from "../AddPost/AddPost"
+import Modal from "../Modal/Modal"
 
 const sideNavData = [
     {
@@ -44,7 +45,9 @@ export const SideNav = ({ userId }) => {
             </div>
             {
                 showModal &&
-                <AddPostModal userId={userId} handleCloseModal={handleCloseModal} />
+                <Modal>
+                    <AddPost userId={userId} handleCloseModal={handleCloseModal} />
+                </Modal>
             }
         </div>
     )

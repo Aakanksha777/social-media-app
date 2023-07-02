@@ -50,21 +50,23 @@ const getUserById = async (req, res) => {
   }
 };
 
-const followUser = async (req, res) => {
-  //same user = req.body.id === req.params.id
-  if (req.body.userId !== req.params.id) {
-    try {
-      const user = await User.findById(req.params.id);
-      const currentUser = await User.findById(req.body.userId);
-      if (!user.followers.includes(req.body.userId)) {
-      } else {
-        res.status(403).json("you allready follow this user");
-      }
-    } catch (err) {
-      res.status(500).json(err);
+const bookmarkPost = async (req, res) => {
+  const { userId, postId } = req.body;
+  try {
+    const currentUser = await User.findById(userId);
+    if (!currentUser.bookmarks.includes(postId)) {
+      await currentUser.updateOne({ $push: { bookmarks: postId } });
+      res.status(200).json({
+        message: `The post is bookmarked for ${currentUser.username}`,
+      });
+    } else {
+      await currentUser.updateOne({ $pull: { bookmarks: postId } });
+      res.status(200).json({
+        message: `The post is removed from bookmark for ${currentUser.username}`,
+      });
     }
-  } else {
-    res.status(403).json("you cant follow yourself");
+  } catch (err) {
+    res.status(500).json(err);
   }
 };
 
@@ -94,6 +96,6 @@ module.exports = {
   updateUser,
   deleteUser,
   getUserById,
-  followUser,
+  bookmarkPost,
   unfollowUser,
 };

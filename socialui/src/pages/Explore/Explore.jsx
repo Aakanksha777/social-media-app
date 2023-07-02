@@ -3,9 +3,9 @@ import PostList from "../../components/PostList/PostList"
 import Navbar from "../../components/navbar/Navbar";
 import "./Explore.css"
 
-const ExploreFeeds = ({ user }) => {
+const ExploreFeeds = ({ userId }) => {
     const [posts, setPosts] = useState([])
-    const { _id: userId } = user
+
     useEffect(() => {
         fetch(`http://localhost:8800/social/post/all`)
             .then((res) => res.json())

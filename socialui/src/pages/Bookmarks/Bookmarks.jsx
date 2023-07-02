@@ -5,7 +5,7 @@ const BookmarkFeeds = ({ user }) => {
     const [posts, setPosts] = useState([])
     const { _id: userId } = user
     useEffect(() => {
-        fetch(`http://localhost:8800/social/post/all`)
+        fetch(`http://localhost:8800/social/post/get-bookmarked-post/${userId}`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.status === 200) {

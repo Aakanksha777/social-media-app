@@ -8,12 +8,15 @@ import EditPost from '../EditPost/EditPost'
 
 const SinglePost = ({ post, userId }) => {
   const { _id: postId, img, createdAt, likes, description, user } = post
-  const { _id: currPostUserId, username, firstname, lastname, profileImage } = user
+  const { _id: currPostUserId, username, firstname, lastname, profileImage, bookmarks } = user
   const [timeAgo] = useState(calculateTimeAgo(createdAt))
   const [likeCount, setLikeCount] = useState(likes.length)
   const [currUserLike, setCurrUserLike] = useState(likes.includes(userId))
+  const [isBookmarked, setIsBookmarked] = useState(bookmarks.includes(postId))
   const [showEditModal, setShowEditModal] = useState(false)
+  console.log(bookmarks);
   const handleLike = async () => {
+    if (!userId) return
     try {
       const res = await fetch(`http://localhost:8800/social/post/like-dislike-post/${postId}`, {
         method: 'PUT',
@@ -31,6 +34,22 @@ const SinglePost = ({ post, userId }) => {
       setCurrUserLike(true)
       setLikeCount(likeCount + 1)
     }
+  }
+  const handleBookmark = async () => {
+    if (!userId) return
+    try {
+      const res = await fetch(`http://localhost:8800/social/user/bookmark-post`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: userId, postId: postId })
+      })
+      const message = await res.json()
+      console.log(message);
+    } catch (error) {
+      console.log(error);
+    }
+    if (isBookmarked) setIsBookmarked(false)
+    else setIsBookmarked(true)
   }
   const openEditModal = () => {
     setShowEditModal(true)
@@ -72,7 +91,14 @@ const SinglePost = ({ post, userId }) => {
             </div>
           </div>
           <BiCommentDetail className='icons' />
-          <BsBookmarkPlus className='icons' />
+          <div onClick={handleBookmark} className="bookmark__btn">
+            {
+              isBookmarked ?
+                <BsBookmarkPlusFill className='icons' />
+                :
+                <BsBookmarkPlus className='icons' />
+            }
+          </div>
           {userId === currPostUserId && <AiOutlineEdit onClick={openEditModal} className='icons' />}
           {showEditModal && <EditPost userId={userId} handleCloseModal={closeEditModal} editPost={post} />}
         </div>

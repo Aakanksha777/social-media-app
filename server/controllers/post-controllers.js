@@ -58,6 +58,30 @@ const likeDislikePost = async (req, res) => {
     res.status(500).json(err);
   }
 };
+const getBookmarkedPost = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const bookmarkedPost = await Promise.all(
+      user.bookmarks.map((postId) => {
+        return Post.find({ _id: postId }).populate("user", {
+          id: 1,
+          username: 1,
+          email: 1,
+          firstname: 1,
+          lastname: 1,
+          profileImage: 1,
+          bookmarks: 1,
+        });
+      })
+    );
+    res
+      .status(200)
+      .json({ status: 200, data: bookmarkedPost.flat(1), error: "" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+};
 
 const getPostById = async (req, res) => {
   try {
@@ -77,6 +101,7 @@ const getAllPosts = async (req, res) => {
       firstname: 1,
       lastname: 1,
       profileImage: 1,
+      bookmarks: 1,
     });
     res.status(200).json({ status: 200, data: allPosts, error: "" });
   } catch (err) {
@@ -107,6 +132,7 @@ const getAllPostExceptCurrUser = async (req, res) => {
           firstname: 1,
           lastname: 1,
           profileImage: 1,
+          bookmarks: 1,
         });
       })
     );
@@ -122,6 +148,7 @@ module.exports = {
   deletePost,
   likeDislikePost,
   getPostById,
+  getBookmarkedPost,
   getAllPosts,
   getAllPostOfCurrUser,
   getAllPostExceptCurrUser,
