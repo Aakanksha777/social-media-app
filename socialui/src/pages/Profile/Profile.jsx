@@ -1,9 +1,9 @@
 import ProfileFeatures from "../../components/ProfileFeatures/ProfileFeatures"
 import "./Profile.css"
-const Profile = () => {
+const Profile = ({user}) => {
     return (
         <div className="profile__container">
-            <ProfileFeatures />
+            <ProfileFeatures user={user}/>
         </div>
     )
 }

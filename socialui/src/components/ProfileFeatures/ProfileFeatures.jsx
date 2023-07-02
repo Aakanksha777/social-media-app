@@ -1,14 +1,13 @@
 import "./ProfileFeatures.css"
 
-const ProfileFeatures = () => {
+const ProfileFeatures = ({user}) => {
+    console.log("user", user)
     return (
         <div className="profile__container">
             <div className="profile__img__container"><img src="" alt="Profile Pic" /></div>
-            <h3 className="profile__fullname">Tanay Pratap</h3>
+            <h3 className="profile__fullname"></h3>
             <p className="profile__username">@tanaypratap</p>
-            <button className="profile__edit__btn">
-                Edit Profile
-            </button>
+            <button className="profile__edit__btn">Edit Profile </button>
             <p className="profile__userdesc">
                 Senior Software Engineer @Microsoft | Creator of India’s biggest
                 programming community | Tweets about JavaScript, ReactJS, Career and
