@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react'
 import './SinglePost.css'
 import { BiCommentDetail, BiSolidCommentDetail } from 'react-icons/bi'
 import { BsBookmarkPlus, BsBookmarkPlusFill } from 'react-icons/bs'
-import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
+import { AiOutlineLike, AiFillLike, AiOutlineEdit } from 'react-icons/ai'
 import { calculateTimeAgo } from '../../utils/mainUtils'
+import EditPost from '../EditPost/EditPost'
 
-const SinglePost = ({ post }) => {
+const SinglePost = ({ post, userId }) => {
   const { _id: postId, img, createdAt, likes, description, user } = post
-  const { _id: userId, username, firstname, lastname, profileImage } = user
+  const { _id: currPostUserId, username, firstname, lastname, profileImage } = user
   const [timeAgo] = useState(calculateTimeAgo(createdAt))
   const [likeCount, setLikeCount] = useState(likes.length)
   const [currUserLike, setCurrUserLike] = useState(likes.includes(userId))
+  const [showEditModal, setShowEditModal] = useState(false)
   const handleLike = async () => {
     try {
       const res = await fetch(`http://localhost:8800/social/post/like-dislike-post/${postId}`, {
@@ -19,7 +21,6 @@ const SinglePost = ({ post }) => {
         body: JSON.stringify({ userId: userId })
       })
       const message = await res.json()
-      console.log(message);
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +32,12 @@ const SinglePost = ({ post }) => {
       setLikeCount(likeCount + 1)
     }
   }
-
+  const openEditModal = () => {
+    setShowEditModal(true)
+  }
+  const closeEditModal = () => {
+    setShowEditModal(false)
+  }
   return (
     <div className='single-post-container'>
       <div className="single-post-userimg">
@@ -67,6 +73,8 @@ const SinglePost = ({ post }) => {
           </div>
           <BiCommentDetail className='icons' />
           <BsBookmarkPlus className='icons' />
+          {userId === currPostUserId && <AiOutlineEdit onClick={openEditModal} className='icons' />}
+          {showEditModal && <EditPost userId={userId} handleCloseModal={closeEditModal} editPost={post} />}
         </div>
       </div>
     </div>

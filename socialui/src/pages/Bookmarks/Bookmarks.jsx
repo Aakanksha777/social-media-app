@@ -3,7 +3,7 @@ import PostList from "../../components/PostList/PostList"
 
 const BookmarkFeeds = ({ user }) => {
     const [posts, setPosts] = useState([])
-
+    const { _id: userId } = user
     useEffect(() => {
         fetch(`http://localhost:8800/social/post/all`)
             .then((res) => res.json())
@@ -17,7 +17,7 @@ const BookmarkFeeds = ({ user }) => {
     }, [])
 
     return (
-        <PostList posts={posts} />
+        <PostList posts={posts} userId={userId} />
     )
 }
 export default BookmarkFeeds

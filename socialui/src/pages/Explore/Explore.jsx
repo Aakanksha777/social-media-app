@@ -5,7 +5,7 @@ import "./Explore.css"
 
 const ExploreFeeds = ({ user }) => {
     const [posts, setPosts] = useState([])
-
+    const { _id: userId } = user
     useEffect(() => {
         fetch(`http://localhost:8800/social/post/all`)
             .then((res) => res.json())
@@ -22,7 +22,7 @@ const ExploreFeeds = ({ user }) => {
         <div>
             <Navbar />
             <div className="explore__feeds">
-                <PostList posts={posts} />
+                <PostList posts={posts} userId={userId} />
 
             </div>
         </div>

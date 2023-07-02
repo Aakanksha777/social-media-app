@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AddPost.css";
 
-const AddPost = ({ userId, handleCloseModal }) => {
+const AddPost = ({ userId, handleCloseModal, editPost }) => {
   const [post, setPost] = useState({
     description: "",
     userId: userId,
@@ -10,6 +10,14 @@ const AddPost = ({ userId, handleCloseModal }) => {
   const handlePostChange = (e) => {
     setPost({ ...post, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    console.log(editPost)
+    if (editPost && Object.keys(editPost).length > 0) {
+      const { description, userId } = editPost
+      setPost({ description, userId })
+    }
+  }, [editPost])
 
   const handleAddPost = (e) => {
     //some validations
