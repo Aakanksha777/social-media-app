@@ -27,7 +27,7 @@ export default function Register() {
     e.preventDefault();
     setDisableBtn(true);
     if (registerData.password !== registerData.confirmPassword) return;
-    fetch("http://localhost:8800/social/auth/register", {
+    fetch("https://social-media-node.onrender.com/social/auth/register", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

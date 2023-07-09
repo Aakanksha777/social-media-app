@@ -21,7 +21,7 @@ const AddPost = ({ userId, handleCloseModal, editPost }) => {
   const handleAddPost = (e) => {
     //some validations
     e.preventDefault();
-    fetch("http://localhost:8800/social/post/create-post", {
+    fetch("https://social-media-node.onrender.com/social/post/create-post", {
       method: "post",
       headers: {
         "content-type": "application/json"

@@ -25,7 +25,7 @@ export default function Login({ isLoggedIn }) {
   //LOGIN
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8800/social/auth/login", {
+    fetch("https://social-media-node.onrender.com/social/auth/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

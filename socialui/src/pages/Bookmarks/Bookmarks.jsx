@@ -5,7 +5,7 @@ const BookmarkFeeds = ({ user }) => {
     const [posts, setPosts] = useState([])
     const { _id: userId } = user
     useEffect(() => {
-        fetch(`http://localhost:8800/social/post/get-bookmarked-post/${userId}`)
+        fetch(`https://social-media-node.onrender.com/social/post/get-bookmarked-post/${userId}`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.status === 200) {

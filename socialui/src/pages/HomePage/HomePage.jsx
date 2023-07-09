@@ -7,7 +7,7 @@ const HomePage = ({ user }) => {
   const { _id: userId } = user
   const [posts, setPosts] = useState([])
   useEffect(() => {
-    fetch(`http://localhost:8800/social/post/timeline/all/${userId}`)
+    fetch(`https://social-media-node.onrender.com/social/post/timeline/all/${userId}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status === 200) {

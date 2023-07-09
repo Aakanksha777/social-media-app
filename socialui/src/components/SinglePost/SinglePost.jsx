@@ -18,7 +18,7 @@ const SinglePost = ({ post, userId }) => {
   const handleLike = async () => {
     if (!userId) return
     try {
-      const res = await fetch(`http://localhost:8800/social/post/like-dislike-post/${postId}`, {
+      const res = await fetch(`https://social-media-node.onrender.com/social/post/like-dislike-post/${postId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId: userId })
@@ -38,7 +38,7 @@ const SinglePost = ({ post, userId }) => {
   const handleBookmark = async () => {
     if (!userId) return
     try {
-      const res = await fetch(`http://localhost:8800/social/user/bookmark-post`, {
+      const res = await fetch(`https://social-media-node.onrender.com/social/user/bookmark-post`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId: userId, postId: postId })

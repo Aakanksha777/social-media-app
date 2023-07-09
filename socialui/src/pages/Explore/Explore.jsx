@@ -7,7 +7,7 @@ const ExploreFeeds = ({ userId }) => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:8800/social/post/all`)
+        fetch(`https://social-media-node.onrender.com/social/post/all`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.status === 200) {
