@@ -8,21 +8,39 @@ const cors = require("cors");
 const userRoute = require("./routes/user-routes");
 const authRoute = require("./routes/auth-routes");
 const postRoute = require("./routes/post-routes");
+const { MongoClient, ServerApiVersion } = require("mongodb");
 
 dotenv.config();
 
 //DB Connection:--
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("connected to DB");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+
+const uri =
+  "mongodb+srv://aakankshamalothia777:Wi4X7clBKUtAfX4d@my-personal-projects.ssaurkn.mongodb.net/?retryWrites=true&w=majority";
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(process.env.MONGO_URL, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
+
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log(
+      "Pinged your deployment. You successfully connected to MongoDB!"
+    );
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
 
 //Middleware
 app.use(express.json()); // It parses incoming requests with JSON payloads and is based on body-parser.
