@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { SideNav } from "./components/SideNav/SideNav";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/hafd/Navbar";
 
 const ProtectedRoute = ({ handleLogin, isLoggedIn, user }) => {
   const navigate = useNavigate();

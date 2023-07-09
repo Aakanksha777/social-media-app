@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PostList from "../../components/PostList/PostList"
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../components/hafd/Navbar";
 import "./Explore.css"
 
 const ExploreFeeds = ({ userId }) => {
