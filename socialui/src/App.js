@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import ProtectedRoute from "./ProtectedRoute";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import ExploreFeeds from "./pages/Explore/Explore";
