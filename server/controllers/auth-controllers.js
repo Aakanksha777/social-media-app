@@ -2,7 +2,7 @@ const User = require("../model/user-model");
 const bcrypt = require("bcrypt");
 
 const registerUser = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { email, password } = req.body;
   try {
     //generate new password : using bcrypt
     const salt = await bcrypt.genSalt(10);
@@ -12,8 +12,7 @@ const registerUser = async (req, res) => {
       return res.status(402).json({ error: "user email already exist" });
     //create new user :
     const newUser = new User({
-      username,
-      email,
+      ...req.body,
       password: hashedpswd,
     });
     //save user and response
